@@ -1,0 +1,20 @@
+§ =============================================================
+§  Personal Information
+§ =============================================================
+
+SetMacro( 'AUTHOR',       'Ivan B. Nikolaev' )
+SetMacro( 'AUTHORREF',    'ekherit' )
+SetMacro( 'EMAIL',        'I.B.Nikolaev@inp.nsk.su' )
+SetMacro( 'ORGANIZATION', 'Budker Insitute of Nuclear Physics' )
+SetMacro( 'COMPANY',      '' )
+SetMacro( 'COPYRIGHT',    'Copyright (c) |YEAR|, |AUTHOR|' )
+SetMacro( 'LICENSE',      'GNU General Public License' )
+
+§ =============================================================
+§  Date and Time Format
+§ =============================================================
+
+§SetFormat( 'DATE', '%x' )
+§SetFormat( 'TIME', '%H:%M' )
+§SetFormat( 'YEAR', '%Y' )
+
