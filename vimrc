@@ -11,12 +11,17 @@ set wildmenu                     " command-line completion in an enhanced mode
 set wildmode=list,full
 set clipboard=unnamedplus        " vim default buffer is system clipboard
 
-set guifont=Monospace\ 14
+
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 "highlight lCursor guifg=NONE guibg=Cyan
 
+colorscheme darkblue
+if has("gui_running")
+ set guifont=Monospace\ 14
+ " set guioptions=m
+endif
 
 if !isdirectory("~/.vim/bundle/Vundle.vim")
   call system("git clone  git://github.com/VundleVim/Vundle.vim  ~/.vim/bundle/Vundle.vim")
@@ -85,7 +90,6 @@ let g:Tex_DefaultTargetFormat='pdf'
 imap <F2> <ESC>:!make<CR>
 nmap <F2> :!make<CR>
 
-colorscheme darkblue
 "let s:figure =     "\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includegraphics[width=<+text width+>\\textwidth]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
 
 "noremap k :Tabularize /&\|\(\\\\\)<CR>
