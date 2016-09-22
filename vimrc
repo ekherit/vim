@@ -36,10 +36,10 @@ filetype plugin indent on     " обязательно!
 Bundle 'git://github.com/VundleVim/Vundle.vim'
 Bundle 'git://github.com/scrooloose/nerdtree'
 Bundle 'git://github.com/ctrlpvim/ctrlp.vim'
-Bundle 'git@github.com:WolfgangMehner/c-support.git'
-Bundle 'git@github.com:ervandew/supertab.git'
+Bundle 'git://github.com/WolfgangMehner/c-support'
+Bundle 'git://github.com/ervandew/supertab'
 Bundle 'git://github.com/mileszs/ack.vim'
-Bundle 'git@github.com:vim-latex/vim-latex.git'
+Bundle 'git://github.com/vim-latex/vim-latex'
 Bundle 'git://github.com/godlygeek/tabular'
 
 
