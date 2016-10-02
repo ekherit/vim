@@ -20,7 +20,7 @@ set imsearch=0
 colorscheme darkblue
 if has("gui_running")
  set guifont=Monospace\ 14
- " set guioptions=m
+ set guioptions-=mT
 endif
 
 if !isdirectory("~/.vim/bundle/Vundle.vim")
@@ -41,6 +41,8 @@ Bundle 'git://github.com/ervandew/supertab'
 Bundle 'git://github.com/mileszs/ack.vim'
 Bundle 'git://github.com/vim-latex/vim-latex'
 Bundle 'git://github.com/godlygeek/tabular'
+Bundle 'git://github.com/xolox/vim-notes'
+Bundle 'git://github.com/xolox/vim-misc'
 
 
 
@@ -93,4 +95,9 @@ nmap <F2> :!make<CR>
 "let s:figure =     "\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includegraphics[width=<+text width+>\\textwidth]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
 
 "noremap k :Tabularize /&\|\(\\\\\)<CR>
+
+"For notest
+let g:notes_directories=['~/vault/space/doc/notes']
+
+imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
 
