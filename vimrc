@@ -11,6 +11,8 @@ set wildmenu                     " command-line completion in an enhanced mode
 set wildmode=list,full
 set clipboard=unnamedplus        " vim default buffer is system clipboard
 
+set cryptmethod=blowfish2
+
 
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -19,32 +21,41 @@ set imsearch=0
 
 colorscheme darkblue
 if has("gui_running")
- set guifont=Monospace\ 14
- set guioptions-=mT
+ set guifont=Monospace\ 13
+" set guioptions-=mT
 endif
 
 if !isdirectory("~/.vim/bundle/Vundle.vim")
   call system("git clone  git://github.com/VundleVim/Vundle.vim  ~/.vim/bundle/Vundle.vim")
 endif
 
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#rc()
-
-filetype plugin indent on     " обязательно!
-
+call vundle#begin()
+"call vundle#rc()
 Bundle 'git://github.com/VundleVim/Vundle.vim'
-Bundle 'git://github.com/scrooloose/nerdtree'
-Bundle 'git://github.com/ctrlpvim/ctrlp.vim'
+"Bundle 'git://github.com/scrooloose/nerdtree'
+"Bundle 'git://github.com/ctrlpvim/ctrlp.vim'
 Bundle 'git://github.com/WolfgangMehner/c-support'
 Bundle 'git://github.com/ervandew/supertab'
-Bundle 'git://github.com/mileszs/ack.vim'
+"Bundle 'git://github.com/mileszs/ack.vim'
 Bundle 'git://github.com/vim-latex/vim-latex'
 Bundle 'git://github.com/godlygeek/tabular'
 Bundle 'git://github.com/xolox/vim-notes'
 Bundle 'git://github.com/xolox/vim-misc'
+Bundle 'git://github.com/jamessan/vim-gnupg'
+"Bundle 'git://github.com/zweifisch/pipe2eval'
 
+"Bundle 'git://github.com/tomtom/tlib_vim'
+"Bundle 'git://github.com/MarcWeber/vim-addon-mw-utils'
+"Bundle 'git://github.com/garbas/vim-snipmate'
+"что-то не заработал этот плагин
+"Plugin 'git://github.com/vim-scripts/browser.vim' 
 
+call vundle#end()            " required
+filetype plugin indent on 
 
 if version >= 700
   " Turn off spell checking
@@ -84,20 +95,23 @@ inoremap <C-д> <C-o>l
 
 
 
-"For vim-latex my changed
+"=============== vim-latex ==========================================
 let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf='atril'
 let g:Tex_DefaultTargetFormat='pdf'
 
 imap <F2> <ESC>:!make<CR>
 nmap <F2> :!make<CR>
-
-"let s:figure =     "\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includegraphics[width=<+text width+>\\textwidth]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
+"===================================================================
 
 "noremap k :Tabularize /&\|\(\\\\\)<CR>
 
-"For notest
+"=============== vim-notes =========================================
 let g:notes_directories=['~/vault/space/doc/notes']
+"===================================================================
 
-imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
+"imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
+"inoremap <C-d> <C-R>=strftime('%F %T%Z (%A, %B, %d)')<CR>
 
+"=============== c-support ==========================================
+let g:C_CreateMenusDelayed = 'yes'  "to supress long plugin loading
