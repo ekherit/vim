@@ -54,6 +54,8 @@ Bundle 'git://github.com/jamessan/vim-gnupg'
 "что-то не заработал этот плагин
 "Plugin 'git://github.com/vim-scripts/browser.vim' 
 
+Bundle 'git://github.com/tpope/vim-fugitive'
+
 call vundle#end()            " required
 filetype plugin indent on 
 
@@ -107,11 +109,25 @@ nmap <F2> :!make<CR>
 "noremap k :Tabularize /&\|\(\\\\\)<CR>
 
 "=============== vim-notes =========================================
-let g:notes_directories=['~/vault/space/doc/notes']
+let g:notes_directories=['~/vault/space/doc/notes', '~/vault/space/doc/worklog']
 "===================================================================
 
 "imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
-"inoremap <C-d> <C-R>=strftime('%F %T%Z (%A, %B, %d)')<CR>
+inoremap <F4> <C-R>=strftime('%F %T%Z (%A, %B, %d)')<CR>
 
 "=============== c-support ==========================================
 let g:C_CreateMenusDelayed = 'yes'  "to supress long plugin loading
+
+
+
+
+if has('gui_running')
+    function! s:ChangeFont(delta)
+        let l:expr = '\=submatch(1)+' . a:delta
+        let l:font = substitute(&guifont, '\v(\d+)', l:expr, '')
+        let &guifont = l:font
+    endfunction
+
+    nnoremap <silent> <C-ScrollWheelUp> :call <SID>ChangeFont(+1)<cr>
+    nnoremap <silent> <C-ScrollWheelDown> :call <SID>ChangeFont(-1)<cr>
+endif
