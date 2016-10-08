@@ -2,8 +2,8 @@ set nocompatible
 syntax on
 "filetype plugin on
 set hidden
-set shiftwidth=2                 " number of spaces to use for each step of (auto) indent
-set tabstop=2                    " tabular size
+set shiftwidth=4                 " number of spaces to use for each step of (auto) indent
+set tabstop=4                    " tabular size
 set expandtab                    " replace tab by spaces 
 set backspace=indent,eol,start   " backspacing over everything in insert mode
 "set incsearch                   " do incremental searching
@@ -114,6 +114,7 @@ let g:notes_directories=['~/vault/space/doc/notes', '~/vault/space/doc/worklog']
 
 "imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
 inoremap <F4> <C-R>=strftime('%F %T%Z (%A, %B, %d)')<CR>
+inoremap <F5> <C-R>=strftime('%T')<CR>
 
 "=============== c-support ==========================================
 let g:C_CreateMenusDelayed = 'yes'  "to supress long plugin loading
