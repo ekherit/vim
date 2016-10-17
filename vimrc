@@ -2,8 +2,8 @@ set nocompatible
 syntax on
 "filetype plugin on
 set hidden
-set shiftwidth=4                 " number of spaces to use for each step of (auto) indent
-set tabstop=4                    " tabular size
+set shiftwidth=2                 " number of spaces to use for each step of (auto) indent
+set tabstop=2                    " tabular size
 set expandtab                    " replace tab by spaces 
 set backspace=indent,eol,start   " backspacing over everything in insert mode
 "set incsearch                   " do incremental searching
@@ -18,6 +18,8 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 "highlight lCursor guifg=NONE guibg=Cyan
+
+set virtualedit=block
 
 colorscheme darkblue
 if has("gui_running")
@@ -109,7 +111,7 @@ nmap <F2> :!make<CR>
 "noremap k :Tabularize /&\|\(\\\\\)<CR>
 
 "=============== vim-notes =========================================
-let g:notes_directories=['~/vault/space/doc/notes', '~/vault/space/doc/worklog']
+let g:notes_directories=['~/vault/space/doc/notes', '~/vault/space/doc/worklog', '~/vault/space/doc/notes/work']
 "===================================================================
 
 "imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
