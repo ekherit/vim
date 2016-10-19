@@ -57,6 +57,7 @@ Bundle 'git://github.com/jamessan/vim-gnupg'
 "Plugin 'git://github.com/vim-scripts/browser.vim' 
 
 Bundle 'git://github.com/tpope/vim-fugitive'
+"Bundle 'git://github.com/vim-scripts/sum.vim'
 
 call vundle#end()            " required
 filetype plugin indent on 
