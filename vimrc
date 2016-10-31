@@ -116,7 +116,7 @@ let g:notes_directories=['~/vault/space/doc/notes', '~/vault/space/doc/worklog',
 "===================================================================
 
 "imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
-inoremap <F4> <C-R>=strftime('%F %T%Z (%A, %B, %d)')<CR>
+inoremap <F4> <C-R>=strftime('%F %T %Z(%z) (%d  %B, %A)')<CR>
 inoremap <F5> <C-R>=strftime('%T')<CR>
 
 "=============== c-support ==========================================
