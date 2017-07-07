@@ -11,6 +11,9 @@ set wildmenu                     " command-line completion in an enhanced mode
 set wildmode=list,full
 set clipboard=unnamedplus        " vim default buffer is system clipboard
 
+"set isfname-={,}
+set isfname-==
+
 set cryptmethod=blowfish2
 
 
@@ -58,6 +61,7 @@ Bundle 'git://github.com/jamessan/vim-gnupg'
 
 Bundle 'git://github.com/tpope/vim-fugitive'
 "Bundle 'git://github.com/vim-scripts/sum.vim'
+Bundle 'git://github.com/kien/rainbow_parentheses.vim'
 
 call vundle#end()            " required
 filetype plugin indent on 
@@ -135,3 +139,8 @@ if has('gui_running')
     nnoremap <silent> <C-ScrollWheelUp> :call <SID>ChangeFont(+1)<cr>
     nnoremap <silent> <C-ScrollWheelDown> :call <SID>ChangeFont(-1)<cr>
 endif
+
+au VimEnter * RainbowParenthesesActivate
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
