@@ -14,6 +14,8 @@ set clipboard=unnamedplus        " vim default buffer is system clipboard
 "set isfname-={,}
 set isfname-==
 
+set path+=**           "looking files in subderrectories (for command find)
+
 set cryptmethod=blowfish2
 
 
