@@ -47,7 +47,7 @@ Bundle 'git://github.com/VundleVim/Vundle.vim'
 "Bundle 'git://github.com/ctrlpvim/ctrlp.vim'
 Bundle 'git://github.com/WolfgangMehner/c-support'
 Bundle 'git://github.com/ervandew/supertab'
-"Bundle 'git://github.com/mileszs/ack.vim'
+Bundle 'git://github.com/mileszs/ack.vim'
 Bundle 'git://github.com/vim-latex/vim-latex'
 Bundle 'git://github.com/godlygeek/tabular'
 Bundle 'git://github.com/xolox/vim-notes'
@@ -175,4 +175,5 @@ set cursorline
 "let g:syntastic_cpp_compiler_options = '-std=c++1y'
 
 let g:airline#extensions#ale#enabled = 1
+let g:ale_cpp_gcc_options = '-std=c++14 -Wall -I/usr/local/root-6.08.06/include -I/home/nikolaev/work'
 
