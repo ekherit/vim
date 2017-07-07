@@ -65,6 +65,11 @@ Bundle 'git://github.com/tpope/vim-fugitive'
 "Bundle 'git://github.com/vim-scripts/sum.vim'
 Bundle 'git://github.com/kien/rainbow_parentheses.vim'
 
+Bundle 'christoomey/vim-titlecase'
+
+Bundle 'vim-syntastic/syntastic'
+
+
 call vundle#end()            " required
 filetype plugin indent on 
 
@@ -146,3 +151,24 @@ au VimEnter * RainbowParenthesesActivate
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+"Line number numeration
+set number  
+"Set gray color of line number
+highlight LineNr guifg=gray 
+"set highlight only for line number not whole string
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline
+
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_include_dirs = [ '/usr/local/geant4.10.00/include/Geant4/', '/usr/local/root-6.04.12/include/root']
+let g:syntastic_cpp_compiler = "g++"
+let g:syntastic_cpp_compiler_options = '-std=c++1y'
