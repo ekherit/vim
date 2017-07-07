@@ -177,3 +177,12 @@ set cursorline
 let g:airline#extensions#ale#enabled = 1
 let g:ale_cpp_gcc_options = '-std=c++14 -Wall -I/usr/local/root-6.08.06/include -I/home/nikolaev/work'
 
+
+
+"Line movement
+noremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
