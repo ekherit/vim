@@ -43,8 +43,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "call vundle#rc()
 Bundle 'git://github.com/VundleVim/Vundle.vim'
-"Bundle 'git://github.com/scrooloose/nerdtree'
-"Bundle 'git://github.com/ctrlpvim/ctrlp.vim'
+Bundle 'git://github.com/scrooloose/nerdtree'
+Bundle 'git://github.com/ctrlpvim/ctrlp.vim'
 Bundle 'git://github.com/WolfgangMehner/c-support'
 Bundle 'git://github.com/ervandew/supertab'
 Bundle 'git://github.com/mileszs/ack.vim'
@@ -61,7 +61,7 @@ Bundle 'git://github.com/jamessan/vim-gnupg'
 "что-то не заработал этот плагин
 "Plugin 'git://github.com/vim-scripts/browser.vim' 
 
-Bundle 'git://github.com/tpope/vim-fugitive'
+Bundle 'tpope/vim-fugitive'
 "Bundle 'git://github.com/vim-scripts/sum.vim'
 Bundle 'git://github.com/kien/rainbow_parentheses.vim'
 
@@ -69,6 +69,8 @@ Bundle 'christoomey/vim-titlecase'
 
 "Bundle 'vim-syntastic/syntastic'
 Bundle 'w0rp/ale'
+
+
 
 
 call vundle#end()            " required
@@ -175,7 +177,7 @@ set cursorline
 "let g:syntastic_cpp_compiler_options = '-std=c++1y'
 
 let g:airline#extensions#ale#enabled = 1
-let g:ale_cpp_gcc_options = '-std=c++14 -Wall -I/usr/local/root-6.08.06/include -I/home/nikolaev/work'
+let g:ale_cpp_gcc_options = '-std=c++14 -Wall -I/usr/local/root-6.08.06/include -I/home/nikolaev/work -I/usr/local/geant4.10.00/include/Geant4 -I/usr/local/root-6.04.12/include/root -Iinclude -Isrc -I/home/nikolaev'
 
 
 
