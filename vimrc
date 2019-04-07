@@ -1,7 +1,7 @@
-set nocompatible
-syntax on
+set nocompatible                 " drop compability with vi
+syntax on                        " syntax highlitning on
 "filetype plugin on
-set hidden
+set hidden                       " allow other buffer while current not changed
 set shiftwidth=2                 " number of spaces to use for each step of (auto) indent
 set tabstop=2                    " tabular size
 set expandtab                    " replace tab by spaces 
@@ -23,12 +23,14 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 "highlight lCursor guifg=NONE guibg=Cyan
+"set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 set virtualedit=block
 
-colorscheme darkblue
+"colorscheme darkblue
+colorscheme desert
 if has("gui_running")
- set guifont=Monospace\ 13
+ set guifont=Monospace\ 10
 " set guioptions-=mT
 endif
 
@@ -43,12 +45,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "call vundle#rc()
 Bundle 'git://github.com/VundleVim/Vundle.vim'
-"Bundle 'git://github.com/scrooloose/nerdtree'
+Bundle 'git://github.com/scrooloose/nerdtree'
 "Bundle 'git://github.com/ctrlpvim/ctrlp.vim'
 Bundle 'git://github.com/WolfgangMehner/c-support'
 Bundle 'git://github.com/ervandew/supertab'
 Bundle 'git://github.com/mileszs/ack.vim'
-Bundle 'git://github.com/vim-latex/vim-latex'
+"Move to vimtex
+"Bundle 'git://github.com/vim-latex/vim-latex'
+"Align columns using pattern
 Bundle 'git://github.com/godlygeek/tabular'
 Bundle 'git://github.com/xolox/vim-notes'
 Bundle 'git://github.com/xolox/vim-misc'
@@ -69,8 +73,11 @@ Bundle 'christoomey/vim-titlecase'
 
 "Bundle 'vim-syntastic/syntastic'
 Bundle 'w0rp/ale'
-
-
+Bundle 'itchyny/lightline.vim'  
+"Nice status line with colors and more info
+Bundle Bundle 'sirver/ultisnips'
+"Bundle 'honza/vim-snippets'
+Bundle 'lervag/vimtex'
 call vundle#end()            " required
 filetype plugin indent on 
 
@@ -101,10 +108,10 @@ inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
 
-noremap р h
-noremap о j
-noremap л k
-noremap д l
+"noremap р h
+"noremap о j
+"noremap л k
+"noremap д l
 inoremap <C-р> <C-o>h
 inoremap <C-о> <C-o>j
 inoremap <C-л> <C-o>k
@@ -114,11 +121,11 @@ inoremap <C-д> <C-o>l
 
 "=============== vim-latex ==========================================
 let g:tex_flavor='latex'
-let g:Tex_ViewRule_pdf='atril'
+let g:Tex_ViewRule_pdf='evince'
 let g:Tex_DefaultTargetFormat='pdf'
 
-imap <F2> <ESC>:!make<CR>
-nmap <F2> :!make<CR>
+imap <F9> <ESC>:!make<CR>
+nmap <F9> :!make<CR>
 "===================================================================
 
 "noremap k :Tabularize /&\|\(\\\\\)<CR>
@@ -158,7 +165,7 @@ set number
 "Set gray color of line number
 highlight LineNr guifg=gray 
 "set highlight only for line number not whole string
-highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+"highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set cursorline
 
 
@@ -175,5 +182,50 @@ set cursorline
 "let g:syntastic_cpp_compiler_options = '-std=c++1y'
 
 let g:airline#extensions#ale#enabled = 1
-let g:ale_cpp_gcc_options = '-std=c++14 -Wall -I/usr/local/root-6.08.06/include -I/home/nikolaev/work'
+"let g:ale_cpp_gcc_options = '-std=c++14 -Wall -I/usr/local/root-6.08.06/include -I/home/nikolaev/work'
+let g:ale_cpp_gcc_options = '-std=c++2a -Wall -I/usr/local/root-v6-16-00/include/ -I/home/nikolaev/work'
+
+"map <F8> <ESC>:w ! lpr -o fit-to-page
+
+set laststatus=2
+command Lpr w !lpr -o fit-to-page
+
+autocmd! bufwritepost ~/.vim/vimrc execute "normal! :source ~/.vimrc"
+
+
+"auto Tabularsize doesnt work
+if exists(":Tabularsize")
+  nmap <Leader>a= :Tabularsize /=<CR>
+  vmap <Leader>a= :Tabularsize /=<CR>
+  nmap <Leader>a: :Tabularsize /:\zs<CR>
+  vmap <Leader>a: :Tabularsize /:\zs<CR>
+endif
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
+
+"SINPPETS
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir="/home/angara/.vim/UltiSnips/"
+"VIMTEX options
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=2
+let g:tex_conceal='abdmg'
+
 
