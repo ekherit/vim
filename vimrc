@@ -75,7 +75,7 @@ Bundle 'christoomey/vim-titlecase'
 Bundle 'w0rp/ale'
 Bundle 'itchyny/lightline.vim'  
 "Nice status line with colors and more info
-Bundle Bundle 'sirver/ultisnips'
+Bundle 'sirver/ultisnips'
 "Bundle 'honza/vim-snippets'
 Bundle 'lervag/vimtex'
 call vundle#end()            " required
