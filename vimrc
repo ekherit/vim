@@ -1,4 +1,5 @@
 set nocompatible                 " drop compability with vi
+filetype plugin indent on
 syntax on                        " syntax highlitning on
 "filetype plugin on
 set hidden                       " allow other buffer while current not changed
@@ -27,8 +28,8 @@ set imsearch=0
 
 set virtualedit=block
 
-"colorscheme darkblue
-colorscheme desert
+colorscheme darkblue
+"colorscheme desert
 if has("gui_running")
  set guifont=Monospace\ 10
 " set guioptions-=mT
@@ -78,6 +79,8 @@ Bundle 'itchyny/lightline.vim'
 Bundle 'sirver/ultisnips'
 "Bundle 'honza/vim-snippets'
 Bundle 'lervag/vimtex'
+Bundle 'rafi/awesome-vim-colorschemes'
+
 call vundle#end()            " required
 filetype plugin indent on 
 
@@ -120,9 +123,9 @@ inoremap <C-д> <C-o>l
 
 
 "=============== vim-latex ==========================================
-let g:tex_flavor='latex'
-let g:Tex_ViewRule_pdf='evince'
-let g:Tex_DefaultTargetFormat='pdf'
+"let g:tex_flavor='latex'
+"let g:Tex_ViewRule_pdf='evince'
+"let g:Tex_DefaultTargetFormat='pdf'
 
 imap <F9> <ESC>:!make<CR>
 nmap <F9> :!make<CR>
@@ -131,7 +134,11 @@ nmap <F9> :!make<CR>
 "noremap k :Tabularize /&\|\(\\\\\)<CR>
 
 "=============== vim-notes =========================================
-let g:notes_directories=['~/vault/space/doc/notes', '~/vault/space/doc/worklog', '~/vault/space/doc/notes/work']
+if isdirectory("~/vault/space/doc/notes")
+  let g:notes_directories=['~/vault/space/doc/notes']
+else
+  let g:notes_directories=['~/tmp/notes']
+endif
 "===================================================================
 
 "imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
@@ -230,7 +237,11 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="/home/angara/.vim/UltiSnips/"
 "VIMTEX options
 let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
+let g:vimtex_view_method='general'
+let g:vimtex_view_general_viewr = 'evince'
 let g:vimtex_quickfix_mode=0
 set conceallevel=2
+"highlight clear Conceal
+highlight Conceal NONE
 let g:tex_conceal='abdmg'
+

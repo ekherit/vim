@@ -18,16 +18,36 @@ def math():
 endglobal
 
 snippet template "Basic template" b
-\documentclass[a4paper]{article}
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english,russian]{babel}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{amsmath,amssymb}
+\usepackage[
+a4paper, 
+mag=1000,  
+left=2cm, 
+right=2cm, 
+top=2cm, 
+bottom=2cm, 
+includehead, 
+%nohead,
+includefoot,
+%nofoot, % eliminates spaces for the foot of the page, which is equivalent to \footskip=0pt
+%showcrop
+%footskip=1cm, 
+%headsep=0.5cm
+]{geometry}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage[dutch]{babel}
-\usepackage{amsmath, amssymb}
+\title{}
+\author{Николаев И.Б.}
+
 
 \begin{document}
-	$0
+\maketitle
+$0
 \end{document}
 endsnippet
 
@@ -507,10 +527,10 @@ snippet ~~ "~" iA
 \sim 
 endsnippet
 
-context "math()"
-snippet set "set" wA
-\\{$1\\} $0
-endsnippet
+#context "math()"
+#snippet set "set" wA
+#\\{$1\\} $0
+#endsnippet
 
 snippet || "mid" iA
  \mid 
