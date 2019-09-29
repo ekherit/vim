@@ -134,11 +134,12 @@ nmap <F9> :!make<CR>
 "noremap k :Tabularize /&\|\(\\\\\)<CR>
 
 "=============== vim-notes =========================================
-if isdirectory("~/vault/space/doc/notes")
-  let g:notes_directories=['~/vault/space/doc/notes']
-else
-  let g:notes_directories=['~/tmp/notes']
-endif
+let g:notes_directories=['~/vault/space/doc/notes']
+"if isdirectory("~/vault/space/doc/notes")
+"  let g:notes_directories=['~/vault/space/doc/notes']
+"else
+"  let g:notes_directories=['~/tmp/notes']
+"endif
 "===================================================================
 
 "imap <C-d> <ESC>:r!date --rfc-3339=seconds<CR>A 
@@ -189,7 +190,7 @@ set cursorline
 "let g:syntastic_cpp_compiler_options = '-std=c++1y'
 
 let g:airline#extensions#ale#enabled = 1
-let g:ale_cpp_gcc_options = '-std=c++2a -Wall -I/usr/local/root-v6-16-00/include/ -I/home/nikolaev/work'
+let g:ale_cpp_gcc_options = '-std=c++2a -Wall -I/usr/local/root/include/ -I/home/nikolaev/work'
 
 "Line movement
 noremap <A-j> :m .+1<CR>==
