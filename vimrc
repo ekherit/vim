@@ -1,6 +1,6 @@
 set nocompatible                 " drop compability with vi
-filetype plugin indent on
 syntax on                        " syntax highlitning on
+filetype plugin indent on
 "filetype plugin on
 set hidden                       " allow other buffer while current not changed
 set shiftwidth=2                 " number of spaces to use for each step of (auto) indent
@@ -20,7 +20,7 @@ set path+=**           "looking files in subderrectories (for command find)
 set cryptmethod=blowfish2
 
 
-set keymap=russian-jcukenwin
+"set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 "highlight lCursor guifg=NONE guibg=Cyan
@@ -28,12 +28,6 @@ set imsearch=0
 
 set virtualedit=block
 
-colorscheme darkblue
-"colorscheme desert
-if has("gui_running")
- set guifont=Monospace\ 10
-" set guioptions-=mT
-endif
 
 if !isdirectory("~/.vim/bundle/Vundle.vim")
   call system("git clone  git://github.com/VundleVim/Vundle.vim  ~/.vim/bundle/Vundle.vim")
@@ -79,7 +73,9 @@ Bundle 'itchyny/lightline.vim'
 Bundle 'sirver/ultisnips'
 "Bundle 'honza/vim-snippets'
 Bundle 'lervag/vimtex'
-Bundle 'rafi/awesome-vim-colorschemes'
+"Bundle 'rafi/awesome-vim-colorschemes'
+Bundle 'morhetz/gruvbox'
+Bundle 'vim-airline/vim-airline'
 
 call vundle#end()            " required
 filetype plugin indent on 
@@ -190,8 +186,11 @@ set cursorline
 "let g:syntastic_cpp_compiler_options = '-std=c++1y'
 
 let g:airline#extensions#ale#enabled = 1
-let g:ale_cpp_gcc_options = '-std=c++2a -Wall -I/usr/local/root/include/ -I/home/nikolaev/work'
-
+"let g:ale_cpp_gcc_options = '-std=c++2a -Wall -I/usr/local/root/include/ -I/home/nikolaev/work'
+let g:ale_cpp_gcc_options = '-std=c++17  -Wall -I/usr/local/root/include/ -I/home/nikolaev/work'
+let g:ale_cpp_clang_options = '-std=c++17  -Wall -I/usr/local/root/include/ -I/home/nikolaev/work'
+"c-support
+let g:C_CFlags='-std=c++17 -Wall -g -O0 -c'
 "Line movement
 noremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -246,3 +245,28 @@ set conceallevel=2
 highlight Conceal NONE
 let g:tex_conceal='abdmg'
 
+if has("gui_running")
+" set guifont=Monospace\ 16
+ set guifont=DejaVu\ Sans\ Mono\ 16
+ "set guioptions-=mT
+ set guioptions-=mT
+endif
+
+"Choose colorscheme
+set background=dark
+"set background=light
+let g:gruvbox_contrast_light="hard"
+let g:gruvbox_italic=1
+let g:gruvbox_invert_signs=0
+let g:gruvbox_improved_strings=0
+let g:gruvbox_improved_warnings=1
+let g:gruvbox_undercurl=1
+let g:gruvbox_contrast_dark="hard"
+colorscheme gruvbox
+"colorscheme darkblue
+"colorscheme desert
+
+
+let g:airline_powerline_fonts=1
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
